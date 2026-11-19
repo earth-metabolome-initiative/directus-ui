@@ -1,0 +1,17 @@
+name: Publish EMI sample explorer
+
+on:
+  schedule:
+    - cron: '30 8 * * *'
+      timezone: 'Europe/Zurich'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    uses: digital-botanical-gardens-initiative/directus-ui/.github/workflows/publish-site.yml@main
+    secrets:
+      DIRECTUS_READ_TOKEN: ${{ secrets.DIRECTUS_READ_TOKEN }}
